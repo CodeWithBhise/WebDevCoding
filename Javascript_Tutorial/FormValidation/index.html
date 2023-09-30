@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            padding: 10px 50px;
+        }
+
+        .formdesign {
+            font-size: 20px;
+        }
+
+        .formdesign input {
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .formerror {
+            color: red;
+        }
+
+        .but {
+            border-radius: 9px;
+            width: 100px;
+            height: 50px;
+            font-size: 25px;
+            margin: 22px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the form</h1>
+    <form action="/myaction.php" name="myform" onsubmit="return validateform()" method="post">
+        <div class="formdesign" id="name">
+            Name:<input type="text" name="fname"><span class="formerror"><b></b></span>
+        </div>
+        <div class="formdesign" id="email">
+            Email:<input type="email" name="femail"><span class="formerror"><b></b></span>
+        </div>
+        <div class="formdesign" id="phone">
+            Phone:<input type="phone" name="fphone"><span class="formerror"><b></b></span>
+        </div>
+        <div class="formdesign" id="pass">
+            password:<input type="password" name="fpass"><span class="formerror"><b></b></span>
+        </div>
+        <div class="formdesign" id="cpass">
+            Confirm password:<input type="password" name="fcpass"><span class="formerror"><b></b></span>
+        </div>
+        <input class="but" type="submit" value="submit">
+    </form>
+    <script>
+        function clearerror() {
+            errors = document.getElementsByClassName('formerror');
+            for (let item of errors) {
+                item.innerHTML = ""
+            }
+        }
+        function seterror(id, error) {
+            //sets error inside tag of id
+            element = document.getElementById(id);
+            element.getElementsByClassName('formerror')[0].innerHTML = error;
+        }
+        function validateform() {
+            var returnval = true;
+            clearerror();
+            var name = document.forms['myform']['fname'].value;
+
+            if (name.length < 5) {
+                seterror("name", "*Length of name is too short");
+                returnval = false
+            }
+            if (name.length == 0) {
+                seterror("name", "*Please Enter name");
+                returnval = false
+            }
+            var email = document.forms['myform']['femail'].value;
+
+            if (email.length > 40) {
+                seterror("email", "*Email is too Long");
+                returnval = false
+            }
+            var phone = document.forms['myform']['fphone'].value;
+            if (phone.length != 10) {
+                seterror("phone", "Number should be 10 digit");
+                returnval = false
+            }
+            var password = document.forms['myform']['fpass'].value;
+            if (!regExp(password)) {
+                console.log("Match")
+            }
+            else{
+                console.log("Not")
+            }
+            if (password.length < 6) {
+                seterror("pass", "Password should be atleast 6 characters long");
+                console.log(typeof password)
+                returnval = false;
+            }
+            var cpassword = document.forms['myform']['fcpass'].value;
+            if (password != cpassword) {
+                seterror("cpass", "Password not Match");
+                returnval = false;
+            }
+            return returnval;
+        }
+
+        function regExp(password) {
+            return password.match(/[1-9]/g)
+        }
+    </script>
+</body>
+
+</html>

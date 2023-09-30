@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="intro">this the dom</p>
+    <p id="Demo"></p>
+    <p class="dell"></p>
+    <img src="smiley.jpg" id="myImage" alt="">
+    <script>
+        // const element = document.getElementById("intro").innerHTML;
+        // document.getElementById("demo").innerHTML="Hello Wolrd";
+        // document.getElementsByTagName("p");
+        // document.getElementById("Demo").innerHTML=`${element}`;
+        // document.getElementsByClassName("dell").innerHTML=`${element}`
+        //Finding HTML Elements by css selector
+
+        //Changing HTML Content
+        document.getElementById("demo").innerHTML="New Text";
+        const element = document.getElementById("intro");
+        element.innerHTML="New Paragraph"
+        //Changing the value of an attribute
+        document.getElementById("myImage").src = "landscape.jpg"
+
+    </script>
+</body>
+</html>
