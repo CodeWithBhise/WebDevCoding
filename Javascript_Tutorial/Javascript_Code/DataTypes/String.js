@@ -58,3 +58,46 @@ while (true) {
     console.log(`found at ${foundpos}`)
     pos = foundpos + 1;
 }
+
+// includes, startsWith, endsWith
+alert( "Widget with id".includes("Widget") ); // true
+
+alert( "Hello".includes("Bye") ); // false
+
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+
+alert( "Widget".startsWith("Wid") ); // true, "Widget" starts with "Wid"let str = "stringify";
+
+//Getting Substring
+alert( str.slice(0, 5) ); // 'strin', the substring from 0 to 5 (not including 5)
+alert( str.slice(0, 1) ); // 's', from 0 to 1, but not including 1, so only character at 0
+
+alert( "Widget".endsWith("get") ); // true, "Widget" ends with "get"
+
+let str = "stringify";
+alert( str.slice(2) ); // 'ringify', from the 2nd position till the end
+
+let str = "stringify";
+
+// start at the 4th position from the right, end at the 1st from the right
+alert( str.slice(-4, -1) ); // 'gif'
+
+let str = "stringify";
+
+// these are same for substring
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"
+
+// ...but not for slice:
+alert( str.slice(2, 6) ); // "ring" (the same)
+alert( str.slice(6, 2) ); // "" (an empty string)
+
+// Comparing strings
+A lowercase letter is always greater than the uppercase:
+
+alert( 'a' > 'Z' ); // true
+
+Letters with diacritical marks are “out of order”:
+
+alert( 'Österreich' > 'Zealand' ); // true
